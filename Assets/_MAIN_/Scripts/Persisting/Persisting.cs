@@ -7,6 +7,7 @@ public class Persisting : MonoBehaviour
     public static Persisting Instance;
 
     [Header("References")]
+    public DialogueSystem dialogueSystem;
     [SerializeField] LoadingScreen loading;
     [SerializeField] AudioSource bgMusicAudioSource, sfxAudioSource;
     [SerializeField] Settings settings;
