@@ -9960,6 +9960,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7898639950029040893}
+  - component: {fileID: 3314178434838323}
   m_Layer: 0
   m_Name: BuildGreen 1
   m_TagString: Untagged
@@ -9992,6 +9993,27 @@ Transform:
   - {fileID: 6870535822680621460}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3314178434838323
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4856240970445155668}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 6.6196165, y: 6.0553417, z: 6.663692}
+  m_Center: {x: 1.9944129, y: 3, z: 1.9503376}
 --- !u!1 &4871827910801338642
 GameObject:
   m_ObjectHideFlags: 0

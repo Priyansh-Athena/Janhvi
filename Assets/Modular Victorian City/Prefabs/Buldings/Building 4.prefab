@@ -12483,6 +12483,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2434798073018763463}
+  - component: {fileID: -6926267453586132222}
+  - component: {fileID: 8216485442334774263}
   m_Layer: 0
   m_Name: Building 4
   m_TagString: Untagged
@@ -12515,6 +12517,48 @@ Transform:
   - {fileID: 628806825298600945}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &-6926267453586132222
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5506110092745301892}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.6951618, y: 6.0553417, z: 6.663692}
+  m_Center: {x: 0.032185078, y: 3, z: 1.9503376}
+--- !u!65 &8216485442334774263
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5506110092745301892}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.5084548, y: 6.0553417, z: 6.663692}
+  m_Center: {x: 5.9367733, y: 3, z: 1.9503376}
 --- !u!1 &5509551643960844254
 GameObject:
   m_ObjectHideFlags: 0
