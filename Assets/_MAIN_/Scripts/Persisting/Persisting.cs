@@ -9,10 +9,11 @@ public class Persisting : MonoBehaviour
     [Header("References")]
     public DialogueSystem dialogueSystem;
     [SerializeField] LoadingScreen loading;
-    [SerializeField] AudioSource bgMusicAudioSource, sfxAudioSource;
     [SerializeField] Settings settings;
     [SerializeField] Pause pausePanel;
+    [SerializeField] PlayerInstruction playerInstructions;
     [SerializeField] GameObject pauseBtn;
+    [SerializeField] AudioSource bgMusicAudioSource, sfxAudioSource;
 
 
     public float BGMusicVolume
@@ -72,5 +73,15 @@ public class Persisting : MonoBehaviour
     public void ShowPausePanel()
     {
         pausePanel.Show();
+    }
+
+    public void ShowPlayerInstruction(string instruction)
+    {
+        playerInstructions.Show(instruction);
+    }
+
+    public void HidePlayerInstruction()
+    {
+        playerInstructions.Hide();
     }
 }

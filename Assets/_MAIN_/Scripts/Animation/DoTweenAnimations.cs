@@ -1,7 +1,8 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using DG.Tweening;
 
 public static class DoTweenAnimations
 {
@@ -56,6 +57,45 @@ public static class DoTweenAnimations
             yield return tween.WaitForCompletion();
 
             yield return new WaitForSeconds(delayBetween);
+        }
+    }
+
+    public static IEnumerator FadeInCanvasGroup(CanvasGroup cg, float duration)
+    {
+        cg.alpha = 0;
+        cg.blocksRaycasts = false;
+
+        Tween tween = cg.DOFade(1, duration);
+
+        yield return tween.WaitForCompletion();
+
+        cg.blocksRaycasts = true;
+    }
+
+    public static IEnumerator FadeOutCanvasGroup(CanvasGroup cg, float duration)
+    {
+        cg.blocksRaycasts = false;
+
+        Tween tween = cg.DOFade(0, duration);
+
+        yield return tween.WaitForCompletion();
+    }
+
+    public static IEnumerator TypeWriterTMP(TMP_Text text,
+                                        string message,
+                                        float letterDelay)
+    {
+        text.text = message;
+        text.maxVisibleCharacters = 0;
+
+        text.ForceMeshUpdate();
+
+        int totalCharacters = text.textInfo.characterCount;
+
+        while (text.maxVisibleCharacters < totalCharacters)
+        {
+            text.maxVisibleCharacters++;
+            yield return new WaitForSeconds(letterDelay);
         }
     }
 }
