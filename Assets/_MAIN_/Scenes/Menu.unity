@@ -1380,6 +1380,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 103512212682416016, guid: cbac9f72f32acd746b1a31cbcea0ec65, type: 3}
+      propertyPath: m_text
+      value: By Janhvi Raval
+      objectReference: {fileID: 0}
     - target: {fileID: 224210015265546138, guid: cbac9f72f32acd746b1a31cbcea0ec65, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1436,6 +1440,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1038505146}
+    - target: {fileID: 938587329499704570, guid: cbac9f72f32acd746b1a31cbcea0ec65, type: 3}
+      propertyPath: m_text
+      value: Start Investigating
+      objectReference: {fileID: 0}
     - target: {fileID: 1308614111005650108, guid: cbac9f72f32acd746b1a31cbcea0ec65, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1567,6 +1575,10 @@ PrefabInstance:
     - target: {fileID: 7643868677975711166, guid: cbac9f72f32acd746b1a31cbcea0ec65, type: 3}
       propertyPath: m_AnchorMin.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607684963497340085, guid: cbac9f72f32acd746b1a31cbcea0ec65, type: 3}
+      propertyPath: m_text
+      value: Forensics Investigator
       objectReference: {fileID: 0}
     - target: {fileID: 8782614724666433923, guid: cbac9f72f32acd746b1a31cbcea0ec65, type: 3}
       propertyPath: m_Pivot.x
