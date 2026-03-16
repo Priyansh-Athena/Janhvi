@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -16,6 +17,7 @@ public class Persisting : MonoBehaviour
     [SerializeField] GameObject pauseBtn;
     [SerializeField] AudioSource bgMusicAudioSource, sfxAudioSource;
 
+    [HideInInspector] public List<Texture2D> capturedPhotos = new List<Texture2D>();
 
     public float BGMusicVolume
     {
