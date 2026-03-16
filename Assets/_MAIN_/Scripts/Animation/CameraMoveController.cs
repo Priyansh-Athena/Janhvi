@@ -52,6 +52,27 @@ public class CameraMoveController : MonoBehaviour
             });
     }
 
+    // Rotate camera to look at a target (without moving position)
+    public void RotateToLookAt(Transform target, float duration = -1f, Action OnComplete = null)
+    {
+        if (duration <= 0)
+            duration = defaultMoveDuration;
+
+        if (target == null) return;
+
+        StopCameraMovement();
+
+        Vector3 direction = (target.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(direction);
+
+        rotateTween = transform.DORotateQuaternion(lookRotation, duration)
+            .SetEase(easeType)
+            .OnComplete(() =>
+            {
+                OnComplete?.Invoke();
+            });
+    }
+
     public void StopCameraMovement()
     {
         moveTween?.Kill();

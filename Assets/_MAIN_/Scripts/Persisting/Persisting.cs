@@ -12,6 +12,7 @@ public class Persisting : MonoBehaviour
     [SerializeField] Settings settings;
     [SerializeField] Pause pausePanel;
     [SerializeField] PlayerInstruction playerInstructions;
+    [SerializeField] CursorLockManager cursor;
     [SerializeField] GameObject pauseBtn;
     [SerializeField] AudioSource bgMusicAudioSource, sfxAudioSource;
 
@@ -83,5 +84,15 @@ public class Persisting : MonoBehaviour
     public void HidePlayerInstruction()
     {
         playerInstructions.Hide();
+    }
+
+    public void LockCursor()
+    {
+        cursor.LockCursor();
+    }
+
+    public void UnlockCursor()
+    {
+        cursor.UnlockCursor();
     }
 }

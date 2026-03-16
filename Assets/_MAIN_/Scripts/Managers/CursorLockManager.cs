@@ -1,10 +1,12 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
+using DG.Tweening;
 
 public class CursorLockManager : MonoBehaviour
 {
     public KeyCode toggleKey = KeyCode.Escape;
+    [SerializeField] CanvasGroup cursorInstructionCg;
 
     bool isCursorLocked = false;
 
@@ -44,6 +46,7 @@ public class CursorLockManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         isCursorLocked = true;
+        cursorInstructionCg.DOFade(1f, 0.35f);
     }
 
     public void UnlockCursor()
@@ -51,5 +54,6 @@ public class CursorLockManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         isCursorLocked = false;
+        cursorInstructionCg.DOFade(0f, 0.35f);
     }
 }

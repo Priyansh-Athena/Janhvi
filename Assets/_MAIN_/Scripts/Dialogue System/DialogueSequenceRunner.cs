@@ -11,6 +11,7 @@ public class DialogueStep
 
     // Optional action triggered when this line appears
     public UnityEvent onStepStart;
+    public UnityEvent onStepEnd;
 
     // optional delay before next line (0 = wait for click)
     public float autoDelay;
@@ -78,6 +79,8 @@ public class DialogueSequenceRunner : MonoBehaviour
             // auto delay (optional)
             if (step.autoDelay > 0)
                 yield return new WaitForSeconds(step.autoDelay);
+
+            step.onStepEnd?.Invoke();
 
             index++;
         }
