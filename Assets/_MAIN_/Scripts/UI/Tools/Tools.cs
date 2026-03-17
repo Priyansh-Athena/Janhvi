@@ -80,12 +80,8 @@ public class Tools : MonoBehaviour
             selectBtnTxt.text = "Select";
         }
 
-        allToolsCg.DOFade(0f, 0.5f).OnComplete(() =>
-        {
-            allToolsCg.blocksRaycasts = false;
-            toolInfoCg.blocksRaycasts = true;
-            toolInfoCg.DOFade(1f, 0.5f);
-        });
+        toolInfoCg.blocksRaycasts = true;
+        toolInfoCg.DOFade(1f, 0.5f);
     }
 
     public void OpenAllTools()
@@ -93,19 +89,14 @@ public class Tools : MonoBehaviour
         toolInfoCg.DOFade(0f, 0.5f).OnComplete(() =>
         {
             toolInfoCg.blocksRaycasts = false;
-            allToolsCg.blocksRaycasts = true;
-            allToolsCg.DOFade(1f, 0.5f);
         });
     }
 
     public void OpenToolsPanel()
     {
-        openToolBtnCg.DOFade(0f, 0.35f).OnComplete(() =>
-        {
-            toolsPanel.blocksRaycasts = true;
-            toolsPanel.DOFade(1f, 0.5f);
-            OpenAllTools();
-        });
+        toolsPanel.blocksRaycasts = true;
+        toolsPanel.DOFade(1f, 0.5f);
+        OpenAllTools();
     }
 
     public void CloseToolsPanel()
@@ -131,6 +122,7 @@ public class Tools : MonoBehaviour
     public void UnSelectTool()
     {
         OnToolSelect(null);
+        OnToolSelected.Invoke(null);
         selectedTool = null;
         currIdx = -1;
     }

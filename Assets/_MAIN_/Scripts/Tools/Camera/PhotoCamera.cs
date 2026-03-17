@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,13 +6,16 @@ public class PhotoCamera : MonoBehaviour
 {
     public Camera playerCamera;
     public PhotoGalleryUI gallery;
+    [SerializeField] CanvasGroup cameraHoldingCg, capture;
 
     public int photoWidth = 512;
     public int photoHeight = 512;
 
+    bool isSelected = false;
+
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Q))
+        if(isSelected && Input.GetKeyDown(KeyCode.Q))
         {
             TakePhoto();
         }
@@ -19,6 +23,11 @@ public class PhotoCamera : MonoBehaviour
 
     public void TakePhoto()
     {
+        capture.DOFade(1f, 0.1f).OnComplete(() =>
+        {
+            capture.DOFade(0f, 0.1f);
+        });
+
         RenderTexture rt = new RenderTexture(photoWidth, photoHeight, 24);
 
         playerCamera.targetTexture = rt;
@@ -37,5 +46,26 @@ public class PhotoCamera : MonoBehaviour
         Destroy(rt);
         gallery.AddPhoto(photo);
         Persisting.Instance.capturedPhotos.Add(photo);
+    }
+
+    public void OnToolSelected(ToolItem tool)
+    {
+        if(tool == null)
+        {
+            isSelected = false;
+            cameraHoldingCg.DOFade(0f, 0.5f);
+            return;
+        }
+
+        if(tool.Name == "Camera")
+        {
+            isSelected = true;
+            cameraHoldingCg.DOFade(1f, 0.5f);
+        }
+        else
+        {
+            isSelected = false;
+            cameraHoldingCg.DOFade(0f, 0.5f);
+        }
     }
 }
