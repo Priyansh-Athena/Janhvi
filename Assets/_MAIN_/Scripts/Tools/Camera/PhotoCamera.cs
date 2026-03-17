@@ -1,9 +1,10 @@
 using DG.Tweening;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PhotoCamera : MonoBehaviour
 {
+    public bool isSelected = false;
+    
     public Camera playerCamera;
     public PhotoGalleryUI gallery;
     [SerializeField] CanvasGroup cameraHoldingCg, capture;
@@ -11,7 +12,6 @@ public class PhotoCamera : MonoBehaviour
     public int photoWidth = 512;
     public int photoHeight = 512;
 
-    bool isSelected = false;
 
     private void Update()
     {
