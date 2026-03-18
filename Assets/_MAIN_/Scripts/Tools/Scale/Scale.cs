@@ -1,6 +1,7 @@
 ﻿using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Scale : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class Scale : MonoBehaviour
     Tween rollTween;
     Tween fadeTween;
     Tween hideTween;
+
+    public static UnityAction OnScaleUsed;
 
     private void Awake()
     {
@@ -78,6 +81,18 @@ public class Scale : MonoBehaviour
         }
     }
 
+    public void TriggerStay(GameObject from, GameObject to, Collider col)
+    {
+        if (col.CompareTag(tagToLookFor))
+        {
+            canRun = true;
+        }
+        else
+        {
+            canRun = false;
+        }
+    }
+
     public void TriggerExited(GameObject from, GameObject to, Collider col)
     {
         canRun = false;
@@ -105,7 +120,7 @@ public class Scale : MonoBehaviour
             x =>
             {
                 currentValue = x;
-                text.text = currentValue.ToString($"F{decimals}");
+                text.text = currentValue.ToString($"F{decimals}") + " cms";
             },
             max,
             duration
@@ -114,19 +129,21 @@ public class Scale : MonoBehaviour
         .OnUpdate(() =>
         {
             float randomValue = Random.Range(min, max);
-            text.text = randomValue.ToString($"F{decimals}");
+            text.text = randomValue.ToString($"F{decimals}") + " cms";
         })
         .OnComplete(() =>
         {
             float finalValue = Random.Range(min, max);
-            text.text = finalValue.ToString($"F{decimals}");
+            text.text = finalValue.ToString($"F{decimals}") + " cms";
 
             photoCamera.TakePhoto();
+            OnScaleUsed?.Invoke();
 
             hideTween?.Kill();
             hideTween = DOVirtual.DelayedCall(1f, () =>
             {
                 scaleMesaurementCg.DOFade(0f, 0.5f);
+
             });
         });
     }

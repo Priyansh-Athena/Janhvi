@@ -1,5 +1,6 @@
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Events;
 
 public class FingerprintKit : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class FingerprintKit : MonoBehaviour
 
     GameObject triggeredObj;
 
+    public static UnityAction OnFingerPrintKitUsed;
 
     private void Awake()
     {
@@ -28,6 +30,7 @@ public class FingerprintKit : MonoBehaviour
             DOVirtual.DelayedCall(0.25f, () =>
             {
                 photoCamera.TakePhoto();
+                OnFingerPrintKitUsed?.Invoke();
             });
         }
     }
@@ -58,6 +61,18 @@ public class FingerprintKit : MonoBehaviour
         if(col.CompareTag(tagToLookFor))
         {
             triggeredObj = to;
+            canRun = true;
+        }
+        else
+        {
+            canRun = false;
+        }
+    }
+
+    public void TriggerStay(GameObject from, GameObject to, Collider col)
+    {
+        if (col.CompareTag(tagToLookFor))
+        {
             canRun = true;
         }
         else

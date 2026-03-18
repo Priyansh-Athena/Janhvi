@@ -1,5 +1,6 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Tweezer : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class Tweezer : MonoBehaviour
 
 
     GameObject triggeredObj;
+
+    public static UnityAction OnTweezerUsed;
 
 
     private void Awake()
@@ -36,6 +39,7 @@ public class Tweezer : MonoBehaviour
             photoCamera.TakePhoto();
             DOVirtual.DelayedCall(0.25f, () =>
             {
+                OnTweezerUsed?.Invoke();
                 Destroy(triggeredObj);
             });
         });
@@ -67,6 +71,18 @@ public class Tweezer : MonoBehaviour
         if (col.CompareTag(tagToLookFor))
         {
             triggeredObj = to;
+            canRun = true;
+        }
+        else
+        {
+            canRun = false;
+        }
+    }
+
+    public void TriggerStay(GameObject from, GameObject to, Collider col)
+    {
+        if(col.CompareTag(tagToLookFor))
+        {
             canRun = true;
         }
         else

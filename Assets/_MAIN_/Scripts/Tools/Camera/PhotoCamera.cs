@@ -1,16 +1,21 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PhotoCamera : MonoBehaviour
 {
     public bool isSelected = false;
-    
+
+    [Space(10)]
+    public string toolName;
     public Camera playerCamera;
     public PhotoGalleryUI gallery;
     [SerializeField] CanvasGroup cameraHoldingCg, capture;
 
     public int photoWidth = 512;
     public int photoHeight = 512;
+
+    public static UnityAction OnPictureClicked;
 
 
     private void Update()
@@ -46,6 +51,8 @@ public class PhotoCamera : MonoBehaviour
         Destroy(rt);
         gallery.AddPhoto(photo);
         Persisting.Instance.capturedPhotos.Add(photo);
+
+        OnPictureClicked?.Invoke();
     }
 
     public void OnToolSelected(ToolItem tool)
@@ -57,7 +64,7 @@ public class PhotoCamera : MonoBehaviour
             return;
         }
 
-        if(tool.Name == "Camera")
+        if(tool.Name == toolName)
         {
             isSelected = true;
             cameraHoldingCg.DOFade(1f, 0.5f);

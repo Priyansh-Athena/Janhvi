@@ -1,6 +1,7 @@
 ﻿using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class PhotoGalleryUI : MonoBehaviour
@@ -12,6 +13,8 @@ public class PhotoGalleryUI : MonoBehaviour
     [SerializeField] Image displayImage;
 
     List<Sprite> photos = new List<Sprite>();
+
+    public static UnityAction<bool> OnToggleGallery;
 
     private void Start()
     {
@@ -68,6 +71,7 @@ public class PhotoGalleryUI : MonoBehaviour
         gallery.DOFade((toggle) ? 1f : 0f, 0.5f).OnComplete(() =>
         {
             gallery.blocksRaycasts = toggle;
+            OnToggleGallery.Invoke(toggle);
         });
     }
 }

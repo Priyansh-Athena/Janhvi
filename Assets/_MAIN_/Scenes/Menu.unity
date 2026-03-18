@@ -2056,7 +2056,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a564d487b43d414eb67f7ae2516a3d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadScene: Test
+  loadScene: Lab
   titleRect: {fileID: 753557236}
   subtitleRect: {fileID: 753557235}
   buttonCgs:
@@ -2664,7 +2664,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!224 &2007792878
 RectTransform:
