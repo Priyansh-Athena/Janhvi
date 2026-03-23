@@ -2056,7 +2056,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a564d487b43d414eb67f7ae2516a3d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadScene: Lab
+  loadScene: CrimeScene
   titleRect: {fileID: 753557236}
   subtitleRect: {fileID: 753557235}
   buttonCgs:
@@ -2716,6 +2716,7 @@ MonoBehaviour:
   bgMusicAudioSource: {fileID: 186792037}
   sfxAudioSource: {fileID: 58890504}
   capturedPhotos: []
+  dialogueNumber: 4
 --- !u!114 &2007792880
 MonoBehaviour:
   m_ObjectHideFlags: 0

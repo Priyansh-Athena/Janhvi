@@ -19,6 +19,8 @@ public class Persisting : MonoBehaviour
 
     [HideInInspector] public List<Texture2D> capturedPhotos = new List<Texture2D>();
 
+    public int dialogueNumber = 4;
+
     public float BGMusicVolume
     {
         get { return bgMusicAudioSource.volume; }

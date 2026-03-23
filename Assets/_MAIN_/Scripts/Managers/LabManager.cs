@@ -32,7 +32,12 @@ public class LabManager : MonoBehaviour
 
     private void Start()
     {
-        RoleIntroduction();
+        switch(Persisting.Instance.dialogueNumber)
+        {
+            case 2:
+                RoleIntroduction();
+                break;
+        }
     }
 
     public void RoleIntroduction()
@@ -240,6 +245,8 @@ public class LabManager : MonoBehaviour
 
                     scaleObj.SetActive(false);
                     player.playerCanMove = true;
+
+                    Persisting.Instance.dialogueNumber++;
                 });
             });
         });

@@ -1,4 +1,6 @@
+using AAMAP;
 using DG.Tweening;
+using System.Collections;
 using UnityEngine;
 
 public class CityManager : MonoBehaviour
@@ -7,16 +9,31 @@ public class CityManager : MonoBehaviour
     [SerializeField] FirstPersonController player;
     [SerializeField] Camera cutsceneCamera;
     [SerializeField] GameObject minimap, map;
+    [SerializeField] BoxCollider crimeSceneCollider, forensicsCollider;
+    [SerializeField] GameObject crimeSceneMapIcon;
 
     [Space(10), Header("1. GAME INTRODUCTION")]
     [SerializeField] DialogueSequenceRunner gameIntroduction_Dialogues;
     [SerializeField] Transform gameIntroduction_Pos_1;
     [SerializeField] CanvasGroup blackPanel, gameTitle, gameSubtitle;
 
+    [Space(10), Header("2. CITY PATROL START")]
+    [SerializeField] DialogueSequenceRunner cityPetrolStart_Dialogues;
+    [SerializeField] Transform levelStartPlayerPos;
+
 
     private void Start()
     {
-        GameIntroduction();
+        Debug.Log($"Dialogue Number: {Persisting.Instance.dialogueNumber}");
+        switch(Persisting.Instance.dialogueNumber)
+        {
+            case 1:
+                GameIntroduction();
+                break;
+            case 3:
+                StartCoroutine(CityPetrolStart());
+                break;
+        }
     }
 
     public void GameIntroduction()
@@ -53,9 +70,39 @@ public class CityManager : MonoBehaviour
                         map.SetActive(true);
                         player.gameObject.SetActive(true);
                         cutsceneCamera.gameObject.SetActive(false);
+
+                        Persisting.Instance.dialogueNumber++;
                     });
                 });
             });
         });
+    }
+
+    public IEnumerator CityPetrolStart()
+    {
+        forensicsCollider.enabled = false;
+        cutsceneCamera.gameObject.SetActive(false);
+        player.gameObject.SetActive(true);
+
+        player.transform.position = levelStartPlayerPos.position;
+        player.transform.rotation = levelStartPlayerPos.rotation;
+
+        yield return new WaitForSeconds(2f);
+
+        Persisting.Instance.ShowPlayerInstruction("Objective: Petrol the city and wait for further instructions!");
+        DOVirtual.DelayedCall(5f, () =>
+        {
+            Persisting.Instance.HidePlayerInstruction();
+        });
+
+        yield return new WaitForSeconds(Random.Range(15, 30));
+
+        cityPetrolStart_Dialogues.Run();
+        crimeSceneCollider.enabled = true;
+
+        minimap.SetActive(true);
+        map.SetActive(true);
+
+        crimeSceneMapIcon.SetActive(true);
     }
 }
