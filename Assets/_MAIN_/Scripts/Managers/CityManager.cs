@@ -33,6 +33,9 @@ public class CityManager : MonoBehaviour
             case 3:
                 StartCoroutine(CityPetrolStart());
                 break;
+            case 5:
+                Debug.Log("Dialogue Number 5");
+                break;
         }
     }
 

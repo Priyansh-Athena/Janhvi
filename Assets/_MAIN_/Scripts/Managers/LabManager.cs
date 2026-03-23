@@ -246,6 +246,14 @@ public class LabManager : MonoBehaviour
                     scaleObj.SetActive(false);
                     player.playerCanMove = true;
 
+                    openToolCg.blocksRaycasts = false;
+                    openEvidenceCg.blocksRaycasts = false;
+
+                    openToolCg.DOFade(1f, 0.5f);
+                    openEvidenceCg.DOFade(1f, 0.5f);
+
+                    Persisting.Instance.capturedPhotos.Clear();
+
                     Persisting.Instance.dialogueNumber++;
                 });
             });
