@@ -28,6 +28,7 @@ public class PhotoCamera : MonoBehaviour
 
     public void TakePhoto()
     {
+        Persisting.Instance.PlayCameraShutter();
         capture.DOFade(1f, 0.1f).OnComplete(() =>
         {
             capture.DOFade(0f, 0.1f);

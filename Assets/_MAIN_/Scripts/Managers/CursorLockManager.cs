@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class CursorLockManager : MonoBehaviour
 {
-    public KeyCode toggleKey = KeyCode.Escape;
+    public KeyCode toggleKey = KeyCode.Tab;
     [SerializeField] CanvasGroup cursorInstructionCg;
 
     bool isCursorLocked = false;
@@ -26,6 +26,10 @@ public class CursorLockManager : MonoBehaviour
             if (!IsPointerOverRaycastUI())
             {
                 LockCursor();
+            }
+            else
+            {
+                Persisting.Instance.PlayButtonClick();
             }
         }
     }

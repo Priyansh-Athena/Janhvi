@@ -9,15 +9,15 @@ public class LabManager : MonoBehaviour
 
     [SerializeField] Transform targetAssistant;
 
-    [Header("2. Role Introduction")]
+    [Space(10), Header("2. Role Introduction")]
     [SerializeField] DialogueSequenceRunner roleIntroduction_Dialogues;
     [SerializeField] Transform targetChiefInvestigator;
 
-    [Header("3. What is Forensics")]
+    [Space(10), Header("3. What is Forensics")]
     [SerializeField] DialogueSequenceRunner whatIsForensics_Dialogues_1;
     [SerializeField] DialogueSequenceRunner whatIsForensics_Dialogues_2;
 
-    [Header("4. Forensics Tranining")]
+    [Space(10), Header("4. Forensics Tranining")]
     [SerializeField] DialogueSequenceRunner forensicsTraining_Dialogues_1;
     [SerializeField] DialogueSequenceRunner forensicsTraining_Dialogues_2;
     [SerializeField] DialogueSequenceRunner forensicsTraining_Dialogues_3;
@@ -29,6 +29,10 @@ public class LabManager : MonoBehaviour
     [SerializeField] GameObject fingerprintObj, tweezerObj, scaleObj;
     int picturesClicked = 0;
 
+    [Space(10), Header("6. Evidence Analysis")]
+    [SerializeField] DialogueSequenceRunner evidenceAnalysis_Dialogues;
+    [SerializeField] CanvasGroup evidencePanel;
+
 
     private void Start()
     {
@@ -36,6 +40,9 @@ public class LabManager : MonoBehaviour
         {
             case 2:
                 RoleIntroduction();
+                break;
+            case 6:
+                EvidenceAnalysis();
                 break;
         }
     }
@@ -256,6 +263,37 @@ public class LabManager : MonoBehaviour
 
                     Persisting.Instance.dialogueNumber++;
                 });
+            });
+        });
+    }
+
+    public void EvidenceAnalysis()
+    {
+        camMove.RotateToLookAt(targetAssistant, 0.5f, () =>
+        {
+            evidenceAnalysis_Dialogues.Run();
+        });
+    }
+
+
+    public void EvidenceAnalysis_1()
+    {
+        evidencePanel.DOFade(1f, 0.5f);
+    }
+
+    public void GameEnd()
+    {
+        evidencePanel.DOFade(0f, 0.5f);
+
+        Persisting.Instance.ShowPlayerInstruction("Case Solved");
+        DOVirtual.DelayedCall(5f, () =>
+        {
+            Persisting.Instance.HidePlayerInstruction();
+
+            DOVirtual.DelayedCall(2f, () =>
+            {
+                Persisting.Instance.dialogueNumber = 1;
+                Persisting.Instance.LoadScene("Menu");
             });
         });
     }

@@ -16,10 +16,11 @@ public class Persisting : MonoBehaviour
     [SerializeField] CursorLockManager cursor;
     [SerializeField] GameObject pauseBtn;
     [SerializeField] AudioSource bgMusicAudioSource, sfxAudioSource;
+    [SerializeField] AudioClip buttonClick, cameraShutter;
 
     [HideInInspector] public List<Texture2D> capturedPhotos = new List<Texture2D>();
 
-    public int dialogueNumber = 4;
+    public int dialogueNumber = 5;
 
     public float BGMusicVolume
     {
@@ -46,6 +47,16 @@ public class Persisting : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void PlayButtonClick()
+    {
+        sfxAudioSource.PlayOneShot(buttonClick);
+    }
+
+    public void PlayCameraShutter()
+    {
+        sfxAudioSource.PlayOneShot(cameraShutter);
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)

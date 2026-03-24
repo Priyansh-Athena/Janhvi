@@ -25,7 +25,7 @@ public class LoadingScreen : MonoBehaviour
     private bool isAnimating = false;
     private Coroutine factRoutine;
     private Coroutine waitTextRoutine;
-    private List<string> spaceFacts = new List<string>();
+    private List<string> forensicFacts = new List<string>();
 
     void Start()
     {
@@ -116,9 +116,9 @@ public class LoadingScreen : MonoBehaviour
 
     public void ChangeRandomFact()
     {
-        if (spaceFacts.Count == 0) return;
+        if (forensicFacts.Count == 0) return;
 
-        string newFact = spaceFacts[Random.Range(0, spaceFacts.Count)];
+        string newFact = forensicFacts[Random.Range(0, forensicFacts.Count)];
 
         factText.DOFade(0f, 0.4f).OnComplete(() =>
         {
@@ -142,108 +142,49 @@ public class LoadingScreen : MonoBehaviour
     private void LoadSpaceFacts()
     {
         // 100+ astrophysics and space facts
-        spaceFacts.AddRange(new string[]
-        {
-            "Light from the Sun takes 8 minutes and 20 seconds to reach Earth.",
-            "The Milky Way galaxy is about 100,000 light-years wide.",
-            "A day on Venus is longer than a year on Venus.",
-            "Neutron stars can spin up to 600 times per second.",
-            "Jupiter has more than 90 known moons.",
-            "Black holes can warp space and time.",
-            "Saturn could float in water due to its low density.",
-            "The hottest planet in the solar system is Venus.",
-            "The Sun accounts for 99.86% of the solar system’s mass.",
-            "There are more stars in the universe than grains of sand on all Earth's beaches.",
-            "Astronauts grow taller in space due to spinal decompression.",
-            "A teaspoon of neutron star material would weigh about 6 billion tons.",
-            "Mars has the tallest volcano in the solar system: Olympus Mons.",
-            "The Great Red Spot on Jupiter is a storm that’s lasted for centuries.",
-            "One year on Mercury equals 88 Earth days.",
-            "A year on Neptune lasts 165 Earth years.",
-            "The first black hole ever photographed was M87* in 2019.",
-            "Space is completely silent — there’s no air to carry sound.",
-            "Comets are mostly made of ice and dust.",
-            "The Andromeda Galaxy is moving toward the Milky Way.",
-            "Pluto is smaller than Earth’s Moon.",
-            "There are galaxies that contain trillions of stars.",
-            "Some planets may have diamond rain.",
-            "Saturn’s rings are made mostly of water ice.",
-            "The Sun will eventually become a white dwarf.",
-            "A light-year is nearly 9.46 trillion kilometers.",
-            "Time passes slower near strong gravity — like near a black hole.",
-            "The Moon is drifting away from Earth by about 3.8 cm per year.",
-            "Mars once had liquid water on its surface.",
-            "A day on Jupiter lasts only 10 hours.",
-            "Venus rotates in the opposite direction to most planets.",
-            "There could be more than 100 billion galaxies in the observable universe.",
-            "The universe is about 13.8 billion years old.",
-            "Some stars explode in supernovae at the end of their lives.",
-            "Gamma-ray bursts are the most powerful explosions in the universe.",
-            "The largest known star, UY Scuti, is about 1,700 times the Sun’s radius.",
-            "Black holes can merge and release massive gravitational waves.",
-            "White dwarfs are the remnants of stars like our Sun.",
-            "Neutron stars are only about 20 km wide but extremely dense.",
-            "Dark matter makes up about 27% of the universe.",
-            "Dark energy accounts for around 68% of the universe.",
-            "The remaining 5% is normal, visible matter.",
-            "Our galaxy is on a collision course with Andromeda in 4 billion years.",
-            "The Hubble Space Telescope orbits Earth every 97 minutes.",
-            "Voyager 1 is the farthest human-made object from Earth.",
-            "Mercury has almost no atmosphere.",
-            "The Sun’s core temperature is about 15 million °C.",
-            "The speed of light is 299,792 kilometers per second.",
-            "Some black holes emit jets faster than 99% the speed of light.",
-            "Jupiter’s magnetic field is 14 times stronger than Earth’s.",
-            "Saturn’s moon Titan has lakes of liquid methane.",
-            "Uranus rotates on its side — it’s tilted by about 98 degrees.",
-            "Solar flares release more energy than 1 million atomic bombs.",
-            "There are stars that are colder than the human body.",
-            "The center of the Milky Way hosts a supermassive black hole called Sagittarius A*.",
-            "Exoplanets are planets that orbit other stars.",
-            "We’ve discovered over 5,000 exoplanets so far.",
-            "The largest volcano in the solar system is on Mars.",
-            "A single bolt of lightning can heat the air to 30,000 °C.",
-            "Our solar system takes about 230 million years to orbit the galaxy.",
-            "Pulsars are rotating neutron stars that emit radio waves.",
-            "There’s a giant cloud of alcohol floating in space.",
-            "Space smells like burnt metal and seared steak (according to astronauts).",
-            "Some planets may have iron rain.",
-            "Saturn’s moon Enceladus shoots geysers of water into space.",
-            "Astronauts’ hearts become rounder in space.",
-            "Spacecraft must travel over 11 km/s to escape Earth’s gravity.",
-            "The Sun converts 4 million tons of matter into energy every second.",
-            "The James Webb Space Telescope can see back in time billions of years.",
-            "The cosmic microwave background is the afterglow of the Big Bang.",
-            "Most galaxies have supermassive black holes at their centers.",
-            "The Moon has moonquakes caused by tidal forces.",
-            "In space, metals can weld together without heat or pressure.",
-            "A year on Pluto lasts 248 Earth years.",
-            "Some stars are so dense a teaspoon would weigh tons.",
-            "The edge of the observable universe is about 46 billion light-years away.",
-            "Jupiter’s moon Europa may have an ocean beneath its ice.",
-            "Mars appears red because of iron oxide (rust) on its surface.",
-            "Neptune’s winds can reach speeds over 2,000 km/h.",
-            "There are rogue planets not bound to any star.",
-            "Space tourism is already happening.",
-            "A black hole’s gravity can bend light itself.",
-            "There’s a hexagonal storm on Saturn’s north pole.",
-            "Earth’s magnetic field protects us from solar radiation.",
-            "Some quasars shine brighter than entire galaxies.",
-            "Gravity on Mars is only 38% that of Earth.",
-            "The Sun orbits the Milky Way at about 828,000 km/h.",
-            "Some stars can live for trillions of years.",
-            "The first exoplanet was discovered in 1992.",
-            "Every second, a star dies somewhere in the universe.",
-            "Earth’s atmosphere extends farther than the Moon’s orbit (tenuously).",
-            "There are radio signals that have no known origin.",
-            "Astronomers estimate 2 trillion galaxies in the observable universe.",
-            "Some stars are blue, white, yellow, or red depending on temperature.",
-            "Cosmic rays constantly hit Earth from outer space.",
-            "The universe is expanding faster over time.",
-            "The first human in space was Yuri Gagarin in 1961.",
-            "Black holes don’t “suck” — they just have immense gravity.",
-            "A solar eclipse happens when the Moon blocks the Sun.",
-            "A lunar eclipse happens when Earth’s shadow covers the Moon."
-        });
+        forensicFacts.AddRange(new string[]
+{
+    "Fingerprints are unique — no two people have identical prints, not even identical twins.",
+    "Forensic science uses biology, chemistry, and physics to solve crimes.",
+    "Even a tiny fiber can link a suspect to a crime scene.",
+    "Latent fingerprints are invisible and require special techniques to reveal.",
+    "DNA evidence can identify a person with extremely high accuracy.",
+    "Blood spatter patterns can reveal how a crime occurred.",
+    "Forensic investigators must document the scene before collecting evidence.",
+    "Cross-contamination of evidence can ruin an investigation.",
+    "Tool marks can be matched to specific tools used in a crime.",
+    "Trace evidence includes hair, fibers, dust, and glass fragments.",
+    "The chain of custody ensures evidence is handled properly.",
+    "Footprints can reveal a suspect’s movement and weight.",
+    "Forensic toxicology helps detect poisons and drugs in the body.",
+    "Even a single hair can contain DNA evidence.",
+    "Fingerprints are formed before birth and remain unchanged for life.",
+    "Crime scene photography preserves evidence for later analysis.",
+    "Forensic analysis helps reconstruct events step by step.",
+    "Gunshot residue can indicate if someone fired a weapon.",
+    "Blood type can narrow down suspects.",
+    "Digital forensics investigates data from phones and computers.",
+    "Forensic entomology uses insects to estimate time of death.",
+    "Glass fragments can show the direction of impact.",
+    "Every contact leaves a trace — known as Locard’s Exchange Principle.",
+    "Investigators must wear gloves to avoid contaminating evidence.",
+    "Different surfaces require different techniques to collect evidence.",
+    "Fingerprints are often found on smooth surfaces like glass and metal.",
+    "Fibers can transfer between people through simple contact.",
+    "Forensic labs analyze evidence collected from crime scenes.",
+    "DNA profiling compares genetic material between samples.",
+    "Even small mistakes at a crime scene can lead to wrong conclusions.",
+    "Forensic science plays a key role in modern justice systems.",
+    "Evidence must be carefully labeled and stored.",
+    "Crime scene sketches help document spatial relationships.",
+    "Forensic experts often testify in court.",
+    "Time of death can be estimated using body temperature and rigor mortis.",
+    "Forensic anthropology studies human bones to identify victims.",
+    "Forensic evidence must be collected in a specific order.",
+    "Investigators use UV light to detect hidden evidence.",
+    "Some chemicals can reveal blood stains invisible to the eye.",
+    "Forensic science combines observation, logic, and scientific methods.",
+    "The smallest clue can solve the biggest mystery."
+});
     }
 }

@@ -19,7 +19,10 @@ public class CityManager : MonoBehaviour
 
     [Space(10), Header("2. CITY PATROL START")]
     [SerializeField] DialogueSequenceRunner cityPetrolStart_Dialogues;
-    [SerializeField] Transform levelStartPlayerPos;
+    [SerializeField] Transform nearLabPlayerPos;
+
+    [Space(10), Header("5. TRAVEL TO FORENSICS LAB")]
+    [SerializeField] Transform nearCrimeScenePlayerPos;
 
 
     private void Start()
@@ -34,7 +37,7 @@ public class CityManager : MonoBehaviour
                 StartCoroutine(CityPetrolStart());
                 break;
             case 5:
-                Debug.Log("Dialogue Number 5");
+                TravelToForensicsLab();
                 break;
         }
     }
@@ -87,8 +90,8 @@ public class CityManager : MonoBehaviour
         cutsceneCamera.gameObject.SetActive(false);
         player.gameObject.SetActive(true);
 
-        player.transform.position = levelStartPlayerPos.position;
-        player.transform.rotation = levelStartPlayerPos.rotation;
+        player.transform.position = nearLabPlayerPos.position;
+        player.transform.rotation = nearLabPlayerPos.rotation;
 
         yield return new WaitForSeconds(2f);
 
@@ -107,5 +110,26 @@ public class CityManager : MonoBehaviour
         map.SetActive(true);
 
         crimeSceneMapIcon.SetActive(true);
+    }
+
+    public void CityPetrolStart_1()
+    {
+        Persisting.Instance.dialogueNumber++;
+    }
+
+    public void TravelToForensicsLab()
+    {
+        crimeSceneMapIcon.SetActive(true);
+
+        crimeSceneCollider.enabled = false;
+        forensicsCollider.enabled = true;
+
+        player.transform.position = nearCrimeScenePlayerPos.position;
+        player.transform.rotation = nearCrimeScenePlayerPos.rotation;
+
+        player.gameObject.SetActive(true);
+        cutsceneCamera.gameObject.SetActive(false);
+
+        Persisting.Instance.dialogueNumber++;
     }
 }

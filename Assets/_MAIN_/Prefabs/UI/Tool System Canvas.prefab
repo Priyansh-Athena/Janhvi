@@ -2003,8 +2003,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toolName: Tweezer
-  toolInfo: Tweezer Info
-  howToUse: Tweezer Usage
+  toolInfo: Tweezers are used to collect trace evidence such as fibers or hair. 
+    These small particles can link a suspect to a location.
+  howToUse: Aim at small objects like fibers.  Press Q to carefully collect the evidence.
   icon: {fileID: 21300000, guid: e8ad05eecff00f84e8619757b5c678c6, type: 3}
   nameTxt: {fileID: 9043737507661999611}
   iconImg: {fileID: 6542753011743082182}
@@ -3703,8 +3704,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toolName: Camera
-  toolInfo: Camera Info
-  howToUse: Camera Usage
+  toolInfo: The forensic camera is used to document the crime scene before anything
+    is disturbed.  This ensures investigators have a permanent record of the original
+    scene.
+  howToUse: 'Aim at the scene and press Q to take a photograph.  Make sure to capture: 
+    The overall room Entry points Important objects'
   icon: {fileID: 21300000, guid: 5939085f7fe97c84bad9f8ceafe285e5, type: 3}
   nameTxt: {fileID: 5295933321184037458}
   iconImg: {fileID: 6006775042220030950}
@@ -6398,8 +6402,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toolName: Scale
-  toolInfo: Scale Info
-  howToUse: Scale Usage
+  toolInfo: The measuring scale is used to document the size of tool marks.  These
+    measurements help identify the tool used in the crime.
+  howToUse: Aim near the tool mark.  Press Q to place the scale.
   icon: {fileID: 21300000, guid: a54d12148946df04eabef39113527db1, type: 3}
   nameTxt: {fileID: 3614601176809696622}
   iconImg: {fileID: 8186937383210348729}
@@ -6865,8 +6870,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toolName: Fingerprint Kit
-  toolInfo: Fingerprint Kit Info
-  howToUse: Fingerprint Kit Usage
+  toolInfo: The fingerprint kit reveals latent fingerprints left behind by touch. 
+    These prints are unique to every individual.
+  howToUse: Aim at smooth surfaces like glass or metal.  Press Q to apply powder
+    and reveal the fingerprint.
   icon: {fileID: 21300000, guid: 300fffee0ee3b2d45baecd194aa4f7a4, type: 3}
   nameTxt: {fileID: 1004709561005807490}
   iconImg: {fileID: 3545312293263647788}
